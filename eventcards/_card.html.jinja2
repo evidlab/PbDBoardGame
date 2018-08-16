@@ -1,0 +1,39 @@
+<div class="card" id="{{card_id}}">
+    <!-- YOUR CUSTOM CODE STARTS HERE -->
+    <div class="header">
+    {%if avatar %}
+    <img class="avatar" src="images/{{avatar}}" />
+    {% endif %}
+    <div class="title">{{title}}</div>
+    </div>
+    {% if flavor %}
+    <div class="flavor">{{flavor}}</div>
+    {% endif %}
+    <div class="timing">{{timing}}</div>
+    {% if instructions %}
+    <div class="instructions">{{instructions}}
+      {% if alt_instructions %}
+      <br />
+      <b>Or</b>
+      <br >
+      <span class="alt-instruction">{{alt_instructions}}</span>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if False %}
+    <div class="carac">
+      {% if devshare %}
+        <div class="iconcell">
+            <img class="icon" src="dev_resources.png"> {{devshare}}
+        </div>
+      {% endif %}
+      {% if usershare %}
+        <div class="iconcell">
+            <img class="icon" src="user_trust.png"> {{usershare}}
+        </div>
+      {% endif %}
+    </div>
+    {% endif %}
+    <!-- YOUR CUSTOM CODE ENDS HERE -->
+</div>

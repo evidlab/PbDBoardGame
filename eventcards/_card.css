@@ -1,0 +1,98 @@
+.card {
+    border-style: solid;
+    border-width: 0.8mm;
+    border-color: black;
+    border-radius: 3mm;
+    width: 63mm;
+    height: 88mm;
+
+    /*
+     * This is important to ensure the entirety of the card,
+     * including border and padding are included in the final desired card width.
+     * https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+     * https://css-tricks.com/box-sizing/
+     */
+    box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+}
+
+.avatar {
+    float: left;
+    margin: 1.1mm;
+    width: 24mm;
+    height: 24mm;
+}
+
+.title {
+    margin-top: 2mm;
+    margin-right: 1mm;
+    margin-left: 1mm;
+    font-family: "Arial";
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+.icon {
+    width: 7mm;
+    height: 7mm;
+    vertical-align: text-bottom;
+    margin: 1mm;
+}
+
+.iconcell {
+    padding: 0.5mm;
+    margin-right: 1mm;
+}
+
+.carac {
+  float: left;
+    margin: 3mm;
+    font-family: "Arial";
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+.flavor {
+  clear: both;
+    font-family: "Arial";
+    font-size: 9pt;
+    margin-left: 1.5mm;
+    margin-right: 1.5mm;
+    margin-top: 5mm;
+    padding: 2mm;
+    background-color: #EEEEEE;
+    border-radius: 3mm;
+    /*
+    float:left;
+    height: 51mm;
+    width: 34mm;
+    */
+}
+
+.instructions {
+    font-family: "Arial";
+    font-size: 11pt;
+    margin-left: 1.5mm;
+    margin-right: 1.5mm;
+    padding: 2mm;
+    background-color: #EEEEEE;
+    border-radius: 3mm;
+    /*
+    float:left;
+    height: 51mm;
+    width: 34mm;
+    */
+}
+
+.timing {
+  font-family: "Arial";
+  font-size: 9pt;
+  padding: 2px;
+  background-color: #333;
+  color: #FFF;
+  width: 95%;
+  margin: 5mm auto;
+}
