@@ -1,0 +1,3 @@
+[submodule "pycard"]
+	path = pycard
+	url = git@github.com:ghostsquad/pycard.git
