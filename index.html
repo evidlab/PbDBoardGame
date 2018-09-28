@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="./eventcards/card.css" />
   <title>PbDBoardGame</title>
+
+  <script src="./controller/index.js"> </script>
+
 </head>
+
+
 <body>
   <div id = "side-panel">
 
   </div>
-
   <div id = "game-container" class="grid-container">
     <div class="grid-item"></div>
     <div id = "info" class="grid-item">
@@ -32,228 +44,1277 @@
     <div class="grid-item headers">Government Upon Request</div>
 
     <div class="grid-item headers">Demographic Information</div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">0</span>
       <br>
+      <span class = "cost">0</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
+
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
 
     <div class="grid-item headers">Health Information</div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Share</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Not to Share</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Share</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Not to Share</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Share</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Not to Share</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Share</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Not to Share</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Share</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Not to Share</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Share</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Not to Share</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Share</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Not to Share</button>
     </div>
 
     <div class="grid-item headers">Purchasing Information</div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
 
     <div class="grid-item headers">Contact List</div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
 
     <div class="grid-item headers">Your Activity on This Site</div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
 
     <div class="grid-item headers">Your Location</div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
-    <div class="grid-item cell">
+    <div class="grid-item cell" >
+      <span class = "cost">-1</span>
       <img class = "img-resource" src="images/resources.png" alt="resources" height="60" width="60">
+      <span class = "benefit">+1</span>
       <br>
+      <span class = "cost">-1</span>
       <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+      <span class = "benefit">+1</span>
+      <br>
+      <button type="button" class="collect-button" onclick="drawCard(this, 'cell')">Collect</button>
+      <button type="button" class="not-collect-button" onclick="drawCard(this, 'cell')">Do Not Collect</button>
     </div>
 
   </div>
+
+<!--  Modal   -->
+<div id="myModal"  class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id = "deck">
+
+      <!-- Playing Cards  -->
+      <div class="pycard">
+          <div class="card" id="card_1">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Re-Baseline!</div>
+      </div>
+
+      <div class="flavor">This phase of development has taken longer than planned. Time to re-baseline to accommodate the new timeline.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Hold onto this card
+
+      <br />
+      <b>Or</b>
+      <br >
+      <span class="alt-instruction"> Reshuffle the deck</span>
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_2">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Regulatory Changes</div>
+      </div>
+
+      <div class="flavor">Europe passes new privacy regulation</div>
+
+      <div class="timing">Permanent</div>
+
+      <div class="instructions">Lose 3 Developer Resources for each shared Government ID, health information, financial information, or user contacts.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_3">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <img class="avatar" src="./images/resources.png" />
+
+      <div class="title">Review Guidelines Change</div>
+      </div>
+
+      <div class="flavor">The App Store released a new more restrictive Review Guidelines.</div>
+
+      <div class="timing">Permanent</div>
+
+      <div class="instructions">User contacts cannot be shared.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_4">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <img class="avatar" src="./images/resources.png" />
+
+      <div class="title">Crunch time</div>
+      </div>
+
+      <div class="flavor">To meet deadlines, your developers are working overtime. Sad developers.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 1 developer resources.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_5">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <img class="avatar" src="./images/resources.png" />
+
+      <div class="title">New Investment</div>
+      </div>
+
+      <div class="flavor">Your idea has sparked a lot of interest on Wall Street.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 2 developer resources.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_6">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Venture Capital</div>
+      </div>
+
+      <div class="flavor">Your idea has sparked a lot of interest in Silicon Valley.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 3 developer resources.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_7">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">IHI Partnership</div>
+      </div>
+
+      <div class="flavor">International Health Insurance, Inc. wants health information about its customers. In exchange they will promote your application.</div>
+
+      <div class="timing">Permanent</div>
+
+      <div class="instructions">If you accept this partnership, then you must choose the share Health Information with other companies. (Gain 2 additional Developer Resources). If you are not collecting health information, then you cannot accept this partnership.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_8">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Amazon Partnership</div>
+      </div>
+
+      <div class="flavor">Amazon wants to bring extra functionality to your users by accessing their purchasing data.</div>
+
+      <div class="timing">Permanent</div>
+
+      <div class="instructions">If you accept this partnership, then you must choose the share Purchasing Information with other companies. (Gain 2 additional Developer Resources). If you are not collecting purchasing information, then you cannot accept this partnership.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_9">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Intelligent Sheep Analytics wants your data!</div>
+      </div>
+
+      <div class="flavor">ISA wants to partner with you to gain access to your users' contacts.</div>
+
+      <div class="timing">Permanent</div>
+
+      <div class="instructions">If you accept this partnership, then you must choose to share the User Contacts with other companies. (Gain 2 additional Developer Resources). If you are not collecting contact information, then you cannot accept this partnership.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_10">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Targeted Advertising</div>
+      </div>
+
+      <div class="flavor">OmniCom wants to tailor advertising to users' location.</div>
+
+      <div class="timing">Permanent</div>
+
+      <div class="instructions">If you accept this partnership, then you must choose the share Location Data with other companies. (Gain 2 additional Developer Resources). If you are not collecting location data, then you cannot accept this partnership.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_11">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Location tracking for health!</div>
+      </div>
+
+      <div class="flavor">In order to provide additional health statistics, the developer team wants access to location data.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">If you accept, then collect Location Data to Provide Service & gain 1 additional Developer Resource.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_13">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Site Activity</div>
+      </div>
+
+      <div class="flavor">The developer team wants to build user profiles based on Site Activity.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">If you accept, then use Site Activity for Profiling & gain 1 additional Developer Resource.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_14">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Contact Info</div>
+      </div>
+
+      <div class="flavor">The developer team wants to promote sharing, so they want to collect User Contacts.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">If you accept, then use User Contacts to Provide Services & gain 1 additional Developer Resource.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_15">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Demo Info</div>
+      </div>
+
+      <div class="flavor">To better understand the user, the developer team wants to collect Demographic Info.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">If you accept, then use Demographic Information to Provide Services & gain 1 additional Developer Resource.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_17">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Dogfood</div>
+      </div>
+
+      <div class="flavor">The developer team uses the new version of the app for a week and gets irritated that User Contacts is required just to use the app. </div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 1 user trust if not using User Contacts for Providing Services, R&D, or Marketing.
+
+      <br />
+      <b>Or</b>
+      <br >
+      <span class="alt-instruction">If you agree, then don't collect User Contacts & gain 1 additional User Trust. </span>
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_18">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">The reviews are in.</div>
+      </div>
+
+      <div class="flavor">Reviewers want to know: do you really need to track site activity?</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 1 user trust if not using Site Activity for Providing Services, R&D, or Marketing.
+
+      <br />
+      <b>Or</b>
+      <br >
+      <span class="alt-instruction">If you agree, then don't collect Site Activity for Providing Services, R&D, or Marketing, pay 1 additional Developer Resource & gain 1 additional User Trust.</span>
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_19">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Polling numbers</div>
+      </div>
+
+      <div class="flavor">3 out of 5 users agree that you shouldn't have to provide Demographic Information in order to use the app.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 1 user trust if not using Demographic Information for Providing Services, R&D, or Marketing.
+
+      <br />
+      <b>Or</b>
+      <br >
+      <span class="alt-instruction">If you choose not to no longer collect Demographic Information,  then gain 1 Developer Resource.</span>
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_20">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Angry email</div>
+      </div>
+
+      <div class="flavor">Someone sent you a letter saying they CANNOT EVEN with your sharing of their data.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">If share more than 3 data with other companies, then lose -2 User Trust and -2 Developer Resources. If share 1 to 3 data, then lose -1 User Trust and -2 Developer Resources.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_21">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Best App Policies Ever!</div>
+      </div>
+
+      <div class="flavor">Your restraint sharing users data is paying off.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">If share no data with other companies, then +2 User Trust & +2 Developer Resources. If share less than 3 data types, then gain 1 User Trust & 1 Developer Resource. If share 3 to 5 data types, then gain 1 User Trust.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_22">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">R&D Team data needs.</div>
+      </div>
+
+      <div class="flavor">The R&D team needs more data to figure out your next big app!</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Choose to share Purchasing or Demographic Information with R&D.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_23">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Marketing's new campaign</div>
+      </div>
+
+      <div class="flavor">To better target the new marketing campaign, Marketing wants Demographic and Purchasing Information data.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Negotiate with marketing to share either Demographic or Purchasing Information data or share both Demographic and Purchasing Information to gain 1 Developer Resource.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_24">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Legal's liability worries.</div>
+      </div>
+
+      <div class="flavor">Legal is worried about potential issues with collecting Health Information</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 1 Developer Resource if you are not collecting Health Information
+
+      <br />
+      <b>Or</b>
+      <br >
+      <span class="alt-instruction">If you choose not to no longer collect Health Information, then gain 1 Developer Resource.</span>
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_25">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Legal's liability worries.</div>
+      </div>
+
+      <div class="flavor">Legal is worried about potential issues with collecting Contact Information</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 1 Developer Resource if you are not collecting User Contacts.
+
+      <br />
+      <b>Or</b>
+      <br >
+      <span class="alt-instruction">If you choose not to no longer collect User Contacts, then gain 1 Developer Resource.</span>
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_26">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">CEO's Statement</div>
+      </div>
+
+      <div class="flavor">The CEO addressed the company to talk about the commitment to protecting the user.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 1 Developer Resource if you are not collecting Purchasing Information.
+
+      <br />
+      <b>Or</b>
+      <br >
+      <span class="alt-instruction">If you choose not to no longer collect Purchasing Information, then gain 1 Developer Resource.</span>
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_28">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Partnership Problems</div>
+      </div>
+
+      <div class="flavor">Promotion of the Int. Health Insurance partnership has made users nervous.</div>
+
+      <div class="timing">Permanent</div>
+
+      <div class="instructions">If you have accepted a partnership or share Health Information with other companies, then lose 2 User Trust.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_29">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Library creator folds</div>
+      </div>
+
+      <div class="flavor">The creator of one of the analytic tools you used has gone bankrupt and the company has been sold. Now you don't know what will happen to your users data!</div>
+
+      <div class="timing">Permanent</div>
+
+      <div class="instructions">If you have accepted a partnership or share User Contacts with other companies, then lose 2 User Trust.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_30">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Third-party Breach</div>
+      </div>
+
+      <div class="flavor">The library for tracking users location has been hacked!</div>
+
+      <div class="timing">Permanent</div>
+
+      <div class="instructions">If you have accepted a partnership or share Location Data with other companies, then lose 2 User Trust.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_31">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <img class="avatar" src="./images/trust.png" />
+
+      <div class="title">Marketing Blitz</div>
+      </div>
+
+      <div class="flavor">Your marketing department's strategy has paid off.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 3 User Trust
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_32">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <img class="avatar" src="./images/trust.png" />
+
+      <div class="title">Successful Promotion</div>
+      </div>
+
+      <div class="flavor">Sometimes paid promotions pay off. Today was one of those times.</div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 2 User Trust
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_33">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <img class="avatar" src="./images/trust.png" />
+
+      <div class="title">Advertising Returns</div>
+      </div>
+
+      <div class="flavor">Your advertising campaign was successful. </div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Gain 1 User Trust
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_34">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">National Security Interests</div>
+      </div>
+
+      <div class="flavor">A government organization has secretly requested access to users' data.</div>
+
+      <div class="timing">Permanent</div>
+
+      <div class="instructions">You must share with the Government all data that you have collected for either internal or external use.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_35">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">National Security Interests</div>
+      </div>
+
+      <div class="flavor">A government organization has secretly requested access to users' data.</div>
+
+      <div class="timing">Permanent</div>
+
+      <div class="instructions">You must share with the Government all data that you have collected for either internal or external use.
+
+      </div>
+
+
+
+      <!-- YOUR CUSTOM CODE ENDS HERE -->
+      </div>
+      </div>
+      <div class="pycard">
+          <div class="card" id="card_36">
+      <!-- YOUR CUSTOM CODE STARTS HERE -->
+      <div class="header">
+
+      <div class="title">Hindsight is 20/20</div>
+      </div>
+
+      <div class="timing">Instant</div>
+
+      <div class="instructions">Re-allocate one item. If this is your first card drawn, ignore it, put it on the bottom, and redraw.
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- YOUR CUSTOM CODE ENDS HERE -->
+  </div>
+  </div>
+</div>
+
+
+
+
 
 
 </body>

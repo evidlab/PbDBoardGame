@@ -96,3 +96,7 @@
   width: 95%;
   margin: 5mm auto;
 }
+
+.pycard {
+  display: none;
+}
