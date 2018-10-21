@@ -1,0 +1,17 @@
+html {
+  background-image:url(/images/ux.gif);
+  background-size: cover;
+
+}
+
+#landing-header h1 {
+  color: white;
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+  background-color: black;
+}

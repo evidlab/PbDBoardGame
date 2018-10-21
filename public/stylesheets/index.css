@@ -1,0 +1,372 @@
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto;
+  padding: 5px;
+
+}
+
+.grid-item:nth-child(n+13):nth-child(-n+21) {
+  border: 2px solid red;
+}
+.grid-item:nth-child(n+23):nth-child(-n+31) {
+  border: 2px solid blue;
+}
+.grid-item:nth-child(n+33):nth-child(-n+41) {
+  border: 2px solid orange;
+}
+.grid-item:nth-child(n+43):nth-child(-n+51) {
+  border: 2px solid green;
+}
+.grid-item:nth-child(n+53):nth-child(-n+61) {
+  border: 2px solid orange;
+}
+.grid-item:nth-child(n+63):nth-child(-n+71) {
+  border: 2px solid purple;
+}
+
+.grid-item {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.horizontal-col {
+  grid-column: 1 / span 9;
+}
+
+.header-vertical-col {
+    grid-row: 1 / span 2;
+}
+
+.headers {
+  background-color: #808080;
+  color: #ffffff;
+}
+
+#info {
+  grid-column: 1 / 6;
+}
+
+#info2 {
+  grid-column: 7 / 10;
+
+}
+.cell {
+  background-color: #DFDFDF;
+  /* display: inline-block; */
+  height: 200px;
+  width: 150px;
+
+}
+.cell:hover {
+  border-color: yellow;
+
+}
+.cell:hover .collect-button{
+   visibility:visible;
+}
+.cell:hover .not-collect-button{
+   visibility:visible;
+}
+
+.benefit {
+    color:red;
+}
+.cost {
+  color: blue;
+}
+
+.collect-button {
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border-radius: 12px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  border: 2px solid #008CBA;
+  visibility:hidden;
+}
+.collect-button:hover {
+  background-color: #008CBA; /* Green */
+  color: white;
+}
+.not-collect-button {
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border-radius: 12px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  border: 2px solid #f44336;
+  visibility:hidden;
+}
+.not-collect-button:hover {
+  background-color: #f44336; /* Green */
+  color: white;
+}
+.triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 40px solid transparent;
+	border-left: 75px solid #555;
+	border-bottom: 40px solid transparent;
+}
+
+.triangle-down {
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-top: 60px solid #555;
+}
+
+/*********************Arrow Properties *****************************/
+#firstArrow:hover {
+  border-left: 80px solid red;
+}
+#secondArrow:hover {
+  border-top: 80px solid red;
+}
+#thirdArrow:hover {
+  border-left: 80px solid blue;
+}
+#fourthArrow:hover {
+  border-top: 80px solid blue;
+}
+#fifthArrow:hover {
+  border-left: 80px solid orange;
+}
+#sixthArrow:hover {
+  border-top: 80px solid orange;
+}
+#seventhArrow:hover {
+  border-left: 80px solid green;
+}
+#eightArrow:hover {
+  border-top: 80px solid green;
+}
+#ninthArrow:hover {
+  border-left: 80px solid orange;
+}
+#tenthArrow:hover {
+  border-top: 80px solid orange;
+}
+#eleventhArrow:hover {
+  border-left: 80px solid purple;
+}
+/**********************Modal CSS   ***********************************/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/**********************Playing Cards   ***********************************/
+.card {
+    border-style: solid;
+    border-width: 0.8mm;
+    border-color: black;
+    border-radius: 3mm;
+    width: 63mm;
+    height: 88mm;
+
+    /*
+     * This is important to ensure the entirety of the card,
+     * including border and padding are included in the final desired card width.
+     * https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+     * https://css-tricks.com/box-sizing/
+     */
+    box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+}
+
+.avatar {
+    float: left;
+    margin: 1.1mm;
+    width: 24mm;
+    height: 24mm;
+}
+
+.title {
+    margin-top: 2mm;
+    margin-right: 1mm;
+    margin-left: 1mm;
+    font-family: "Arial";
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+.icon {
+    width: 7mm;
+    height: 7mm;
+    vertical-align: text-bottom;
+    margin: 1mm;
+}
+
+.iconcell {
+    padding: 0.5mm;
+    margin-right: 1mm;
+}
+
+.carac {
+  float: left;
+    margin: 3mm;
+    font-family: "Arial";
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+.flavor {
+  clear: both;
+    font-family: "Arial";
+    font-size: 9pt;
+    margin-left: 1.5mm;
+    margin-right: 1.5mm;
+    margin-top: 5mm;
+    padding: 2mm;
+    background-color: #EEEEEE;
+    border-radius: 3mm;
+    /*
+    float:left;
+    height: 51mm;
+    width: 34mm;
+    */
+}
+
+.instructions {
+    font-family: "Arial";
+    font-size: 11pt;
+    margin-left: 1.5mm;
+    margin-right: 1.5mm;
+    padding: 2mm;
+    background-color: #EEEEEE;
+    border-radius: 3mm;
+    /*
+    float:left;
+    height: 51mm;
+    width: 34mm;
+    */
+}
+
+.timing {
+  font-family: "Arial";
+  font-size: 9pt;
+  padding: 2px;
+  background-color: #333;
+  color: #FFF;
+  width: 95%;
+  margin: 5mm auto;
+}
+
+.pycard:nth-child(n+2) {
+  display: none;
+}
+
+/******************************* Side Panel **********************************/
+#scoreButton {
+  width: 100%;
+  background-color: #4CAF50; /* Green */
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+}
+#scoreButton:hover {
+  background-color: #0000FF;
+  font-size: 18px;
+}
+
+#scoreChecker {
+  font-size: 2em;
+}
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #C0C0C0; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
