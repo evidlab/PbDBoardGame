@@ -35,13 +35,13 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use("/", authRoutes);
 
-// app.listen(process.env.PORT, process.env.IP, function(){
-//    console.log("The YelpCamp Server Has Started!");
-// });
-
 app.listen(process.env.PORT, process.env.IP, function(){
-  console.log('server is listening on port', process.env.PORT);
+   console.log("Server has started");
 });
+
+// app.listen(process.env.PORT, process.env.IP, function(){
+//   console.log('server is listening on port', process.env.PORT);
+// });
 
 
 // var server = app.listen(3000, () => {           //This will log where ther port is listening
