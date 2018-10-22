@@ -10,15 +10,21 @@ var express = require("express"),
 var authRoutes = require("./routes/index");
 
 // mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
-mongoose.connect("mongodb://localhost:27017/pbdboardgame", {useNewUrlParser: true});
+// mongoose.connect("mongodb://localhost:27017/pbdboardgame", {useNewUrlParser: true});
 
-//mongoose.connect("mongodb:rj:infosci35@ds137263.mlab.com:37263/pbdboardgame", {useNewUrlParser: true});
+mongoose.connect("mongodb:rj:infosci35@ds137263.mlab.com:37263/pbdboardgame", {useNewUrlParser: true});
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public")); //
+process.on('unhandledRejection', error => {
+  // Won't execute
+  console.log('unhandledRejection', error.test);
+});
+
+new Promise((_, reject) => reject({ test: 'woops!' })).catch(() => {});
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -33,7 +39,11 @@ app.use("/", authRoutes);
 //    console.log("The YelpCamp Server Has Started!");
 // });
 
-
-var server = app.listen(3000, () => {           //This will log where ther port is listening
-	console.log('server is listening on port', server.address().port)
+app.listen(process.env.PORT, process.env.IP, function(){
+  console.log('server is listening on port', process.env.PORT);
 });
+
+
+// var server = app.listen(3000, () => {           //This will log where ther port is listening
+// 	console.log('server is listening on port', server.address().port)
+// });
