@@ -10,13 +10,10 @@
     <div class="flavor">{{flavor}}</div>
     {% endif %}
     <br />
-    <br />
     {% if instructions %}
     <div class="instructions">{{instructions}}
       {% if alt_instructions %}
-      <br />
-      <b>Or</b>
-      <br >
+      <div class="alt-sep">-- <b>Or</b> --</div>
       <span class="alt-instruction">{{alt_instructions}}</span>
       {% endif %}
     </div>

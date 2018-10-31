@@ -74,7 +74,7 @@
 
 .instructions {
     font-family: "Arial";
-    font-size: 11pt;
+    font-size: 10pt;
     margin-left: 1.5mm;
     margin-right: 1.5mm;
     padding: 2mm;
@@ -95,4 +95,7 @@
   color: #FFF;
   width: 95%;
   margin: 5mm auto;
+}
+.alt-sep {
+  text-align: center;
 }
