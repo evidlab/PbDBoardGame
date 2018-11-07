@@ -24,7 +24,7 @@
 </head>
 <body>
 <div class="topnav" id="myTopnav">
-  <a href="#home" class="active">Home</a>
+  <a href="/" class="active">Home</a>
   <a onclick="openNav()" href="#">Check Score</a>
 </div>
 
@@ -32,12 +32,12 @@
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div id = "scoreBoard">
     <div class = "team">
-      <center><h2> Team Name </h2></center>
+      <center><h2> Team <%= currentUser.username %></h2></center>
       <div class="score-grid-container">
         <div id = "dev-score" class="score-grid-item">Developer Time</div>
-        <div class="score-grid-item">24</div>
+        <div class="score-grid-item"><%= currentUser.developertime %></div>
         <div id = "user-score" class="score-grid-item">User Trust</div>
-        <div class="score-grid-item">24</div>
+        <div class="score-grid-item"><%= currentUser.usertrust %></div>
       </div>
     </div>
   </div>
@@ -70,13 +70,13 @@
         <center>
           <div class="container-one row-one-a">
             <h4>Provide Service, Maintain Site</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">-2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit" >0</span>
             <br>
             <span class = "cost">0</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -87,13 +87,13 @@
           <center>
           <div class="container-one row-one-a">
             <h4>Marketing</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost" data-value = "0">0</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit" data-value = "1">+1</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -104,13 +104,13 @@
           <center>
           <div class="container-one row-one-a">
             <h4>Profiling</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost" >+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit" >-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-1</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit" >+1</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -124,13 +124,13 @@
           <center>
           <div class="container-one row-one-b">
             <h4>Other Corps</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+4</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-3</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-3</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+3</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -141,9 +141,9 @@
           <center>
           <div class="container-one row-one-b">
             <h4>Academic Researchers</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
             <span class = "cost">0</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
@@ -158,13 +158,13 @@
           <center>
           <div class="container-one row-one-b">
             <h4>Government on Request</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">-3</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-3</span>
             <br>
             <span class = "cost">0</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -188,14 +188,14 @@
       <div class="wrapper-two">
         <center>
           <div class="container-two">
-            <h4>Provide Service, Maintain Site</h4>
-            <span class = "cost">-1</span>
+            <h4>Government On Request</h4>
+            <span class = "cost">-3</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-3</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-5</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -205,14 +205,14 @@
       <div class="wrapper-two">
           <center>
           <div class="container-two">
-            <h4>Marketing</h4>
-            <span class = "cost">-1</span>
+            <h4>Academic Research</h4>
+            <span class = "cost">+3</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-3</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-3</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+3</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -222,14 +222,14 @@
       <div class="wrapper-two">
           <center>
           <div class="container-two">
-            <h4>Profiling</h4>
-            <span class = "cost">-1</span>
+            <h4>Other Corps</h4>
+            <span class = "cost">+3</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-5</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-4</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+3</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -242,12 +242,12 @@
       <div class="wrapper-two">
           <center>
           <div class="container-two">
-            <h4>Other Corps</h4>
-            <span class = "cost">-1</span>
+            <h4>Profiling</h4>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-1</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+1</span>
             <br>
@@ -259,14 +259,14 @@
       <div class="wrapper-two">
           <center>
           <div class="container-two">
-            <h4>Academic Researchers</h4>
-            <span class = "cost">-1</span>
+            <h4>Marketing</h4>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-4</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -276,14 +276,14 @@
       <div class="wrapper-two">
           <center>
           <div class="container-two">
-            <h4>Government on Request</h4>
-            <span class = "cost">-1</span>
+            <h4>Provide Service, maintain site</h4>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
             <span class = "benefit">0</span>
             <br>
             <span class = "cost">0</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -309,13 +309,13 @@
         <center>
           <div class="container-three">
             <h4>Provide Service, Maintain Site</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-1</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">+1</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">-1</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -326,13 +326,13 @@
           <center>
           <div class="container-three">
             <h4>Marketing</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+4</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-3</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-3</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -343,11 +343,11 @@
           <center>
           <div class="container-three">
             <h4>Profiling</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-2</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+1</span>
             <br>
@@ -363,13 +363,13 @@
           <center>
           <div class="container-three">
             <h4>Other Corps</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+5</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-4</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-6</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+4</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -380,13 +380,13 @@
           <center>
           <div class="container-three">
             <h4>Academic Researchers</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-3</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -396,14 +396,14 @@
       <div class="wrapper-three">
           <center>
           <div class="container-three">
-            <h4>Government on Request</h4>
-            <span class = "cost">-1</span>
+            <h4>Government on request</h4>
+            <span class = "cost">-3</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-4</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-3</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -428,14 +428,14 @@
       <div class="wrapper-four">
         <center>
           <div class="container-four">
-            <h4>Provide Service, Maintain Site</h4>
-            <span class = "cost">-1</span>
+            <h4>Government on request</h4>
+            <span class = "cost">-3</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-4</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-3</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -445,14 +445,14 @@
       <div class="wrapper-four">
           <center>
           <div class="container-four">
-            <h4>Marketing</h4>
-            <span class = "cost">-1</span>
+            <h4>cademic Researchers</h4>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-3</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -462,14 +462,14 @@
       <div class="wrapper-four">
           <center>
           <div class="container-four">
-            <h4>Profiling</h4>
-            <span class = "cost">-1</span>
+            <h4>Other Corps</h4>
+            <span class = "cost">+3</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-3</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-4</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+3</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -482,12 +482,12 @@
       <div class="wrapper-four">
           <center>
           <div class="container-four">
-            <h4>Other Corps</h4>
-            <span class = "cost">-1</span>
+            <h4>Profiling</h4>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-2</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+1</span>
             <br>
@@ -499,14 +499,14 @@
       <div class="wrapper-four">
           <center>
           <div class="container-four">
-            <h4>Academic Researchers</h4>
-            <span class = "cost">-1</span>
+            <h4>Marketing</h4>
+            <span class = "cost">+4</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-3</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-3</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -516,14 +516,14 @@
       <div class="wrapper-four">
           <center>
           <div class="container-four">
-            <h4>Government on Request</h4>
-            <span class = "cost">-1</span>
+            <h4>Provide Service, maintain site</h4>
+            <span class = "cost">+1</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
             <span class = "benefit">0</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-2</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -550,13 +550,13 @@
         <center>
           <div class="container-five">
             <h4>Provide Service, Maintain Site</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">+2</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">-2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -567,13 +567,13 @@
           <center>
           <div class="container-five">
             <h4>Marketing</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-2</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -584,11 +584,11 @@
           <center>
           <div class="container-five">
             <h4>Profiling</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-1</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+1</span>
             <br>
@@ -604,13 +604,13 @@
           <center>
           <div class="container-five">
             <h4>Other Corps</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+5</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-4</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-5</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+3</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -621,13 +621,13 @@
           <center>
           <div class="container-five">
             <h4>Academic Researchers</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-2</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+2</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -638,13 +638,13 @@
           <center>
           <div class="container-five">
             <h4>Government on Request</h4>
-            <span class = "cost">-1</span>
+            <span class = "cost">-3</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-4</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-3</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+3</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -669,14 +669,14 @@
       <div class="wrapper-six">
         <center>
           <div class="container-six">
-            <h4>Provide Service, Maintain Site</h4>
-            <span class = "cost">-1</span>
+            <h4>Government on request</h4>
+            <span class = "cost">-3</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-4</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-2</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+3</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -686,14 +686,14 @@
       <div class="wrapper-six">
           <center>
           <div class="container-six">
-            <h4>Marketing</h4>
-            <span class = "cost">-1</span>
+            <h4>Academic Researchers</h4>
+            <span class = "cost">+3</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-3</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+3</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -703,14 +703,14 @@
       <div class="wrapper-six">
           <center>
           <div class="container-six">
-            <h4>Profiling</h4>
-            <span class = "cost">-1</span>
+            <h4>Other Corps</h4>
+            <span class = "cost">+4</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-4</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-4</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+4</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -723,12 +723,12 @@
       <div class="wrapper-six">
           <center>
           <div class="container-six">
-            <h4>Other Corps</h4>
-            <span class = "cost">-1</span>
+            <h4>Profiling</h4>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-1</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+1</span>
             <br>
@@ -740,14 +740,14 @@
       <div class="wrapper-six">
           <center>
           <div class="container-six">
-            <h4>Academic Researchers</h4>
-            <span class = "cost">-1</span>
+            <h4>Marketing</h4>
+            <span class = "cost">+4</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-4</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">-4</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">+4</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
@@ -757,14 +757,14 @@
       <div class="wrapper-six">
           <center>
           <div class="container-six">
-            <h4>Government on Request</h4>
-            <span class = "cost">-1</span>
+            <h4>Provide Service, maintain site</h4>
+            <span class = "cost">+2</span>
             <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
-            <span class = "benefit">0</span>
+            <span class = "benefit">-2</span>
             <br>
-            <span class = "cost">0</span>
+            <span class = "cost">+2</span>
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
-            <span class = "benefit">+1</span>
+            <span class = "benefit">-1</span>
             <br>
             <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
             <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>

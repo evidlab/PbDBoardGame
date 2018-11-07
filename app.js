@@ -1,15 +1,19 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
     app = express(),
-    User = require("./models/users"),
     LocalStrategy = require("passport-local"),
     methodOverride = require("method-override"),
+    User = require("./models/users"),
+    Team = require("./models/teams"),
+    LocalStrategy = require("passport-local"),
     passport = require("passport"),
+    flash = require("connect-flash"),
+    expressSession = require('express-session'),
+    MongoStore = require('connect-mongo')(expressSession);
     mongoose = require("mongoose");
 
 var authRoutes = require("./routes/index");
 
-// mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
 // mongoose.connect("mongodb://localhost:27017/pbdboardgame", {useNewUrlParser: true});
 
 mongoose.connect("mongodb:rj:infosci35@ds137263.mlab.com:37263/pbdboardgame", {useNewUrlParser: true});
@@ -25,6 +29,16 @@ process.on('unhandledRejection', error => {
 });
 
 new Promise((_, reject) => reject({ test: 'woops!' })).catch(() => {});
+app.use(require("express-session")({
+  secret: "I like turtles",
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
+
+//Configure Flash
+app.use(flash());
+app.locals.moment = require('moment');
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -32,16 +46,26 @@ passport.use(new LocalStrategy(User.authenticate()));;
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//Include User variable on every page
+app.use(function(req, res, next){
+  res.locals.currentTeam = req.team;
+  res.locals.currentUser = req.user;
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
+  next();
+});
 
 app.use("/", authRoutes);
 
-app.listen(process.env.PORT, process.env.IP, function(){
-   console.log("Server has started");
-});
+
 
 // app.listen(process.env.PORT, process.env.IP, function(){
-//   console.log('server is listening on port', process.env.PORT);
+//    console.log("The YelpCamp Server Has Started!");
 // });
+
+app.listen(process.env.PORT, process.env.IP, function(){
+  console.log('server is listening on port');
+});
 
 
 // var server = app.listen(3000, () => {           //This will log where ther port is listening
