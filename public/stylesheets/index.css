@@ -174,7 +174,7 @@
 }
 
 /* Modal Content */
-.modal-content {
+#modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -364,6 +364,7 @@
 #main {
     transition: margin-left .5s;
 }
+
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {

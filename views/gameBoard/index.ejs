@@ -19,6 +19,9 @@
   <title>PbDBoardGame</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+  var team_id = "<%= currentTeam._id %>";
+  </script>
 
   <script src="../controller/index.js"> </script>
 </head>
@@ -26,18 +29,22 @@
 <div class="topnav" id="myTopnav">
   <a href="/" class="active">Home</a>
   <a onclick="openNav()" href="#">Check Score</a>
+  <a onclick="resetGame()" href="#">Reset Game</a>
+  <div class="topnav-right">
+    <a onclick="saveGame()" href="#">Save Game</a>
+  </div>
 </div>
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div id = "scoreBoard">
     <div class = "team">
-      <center><h2> Team <%= currentUser.username %></h2></center>
+      <center><h2> Team <%= currentTeam.teamname %></h2></center>
       <div class="score-grid-tabs container">
         <div id = "dev-score" class="score-grid-item">Developer Time</div>
-        <div class="score-grid-item"><%= currentUser.developertime %></div>
+        <div id = "dev-points" class="score-grid-item"><%= currentTeam.developertime %></div>
         <div id = "user-score" class="score-grid-item">User Trust</div>
-        <div class="score-grid-item"><%= currentUser.usertrust %></div>
+        <div id = "user-points" class="score-grid-item"><%= currentTeam.usertrust %></div>
       </div>
     </div>
     <div>
@@ -51,14 +58,25 @@
 <% include cards.ejs %>
 
 <!--  Modal   -->
-<div id="myModal"  class="modal">
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div id="modal-content">
+      <div class="modal-body text-center">
+        <div class="loader"></div>
+        <div class="loader-txt">
+          <p>Adding Points...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!--  Modal   -->
+<div id="myModal"  class="modal">
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-      <div id = "deck_content">
-
-      </div>
+      <div id = "deck_content"></div>
   </div>
 </div>
 
@@ -87,8 +105,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -104,8 +122,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit" data-value = "1">+1</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -121,8 +139,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit" >+1</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </cetner>
       </div>
@@ -141,8 +159,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+3</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -158,8 +176,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+1</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -175,8 +193,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -206,8 +224,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -223,8 +241,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+3</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -240,8 +258,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+3</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </cetner>
       </div>
@@ -260,8 +278,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+1</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -277,8 +295,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -294,8 +312,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -326,8 +344,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">-1</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -343,8 +361,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -360,8 +378,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+1</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </cetner>
       </div>
@@ -380,8 +398,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+4</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -397,8 +415,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -414,8 +432,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -446,8 +464,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -463,8 +481,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -480,8 +498,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+3</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </cetner>
       </div>
@@ -500,8 +518,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+1</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -517,8 +535,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -534,8 +552,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -567,8 +585,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">-2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -584,8 +602,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -601,8 +619,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+1</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </cetner>
       </div>
@@ -621,8 +639,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+3</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -638,8 +656,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+2</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -655,8 +673,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+3</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -687,8 +705,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+3</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -704,8 +722,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+3</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -721,8 +739,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+4</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </cetner>
       </div>
@@ -741,8 +759,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+1</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -758,8 +776,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">+4</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>
@@ -775,8 +793,8 @@
             <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
             <span class = "benefit">-1</span>
             <br>
-            <button type="button" class="collect-button" onclick="collected(this, 'cell')">Collect</button>
-            <button type="button" class="not-collect-button" onclick="collected(this, 'cell')">Do Not Collect</button>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
           </div>
         </center>
       </div>

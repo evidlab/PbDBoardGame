@@ -13,10 +13,11 @@
   </div>
 
   <div id="landing-header">
-    <% if(currentUser){ %>
-      <a href="/gameBoard" class="btn btn-lg btn-success">Game Board</a>
+    <center><p style = "font-size:100px; color:white;">PbDBoardGame</P></center>
+    <% if(currentUser &&currentTeam){ %>
+      <a href="/gameBoard" class="btn btn-lg btn-success">Start Game</a>
     <% } %>
-      <%# <a href="/joingteam" class="btn btn-lg btn-success">Join a team</a> %>
+      <!-- <a href="/joingteam" class="btn btn-lg btn-success">Join a team</a> -->
 	  <!-- <a href="/register" class="btn btn-lg btn-success">Create New User</a> -->
     <!-- <a href="/login" class="btn btn-lg btn-success">Continue Game</a> -->
     <!-- <a href="/gameBoard" class="btn btn-lg btn-success">Game Board</a> -->

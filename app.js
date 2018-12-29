@@ -48,11 +48,15 @@ passport.deserializeUser(User.deserializeUser());
 
 //Include User variable on every page
 app.use(function(req, res, next){
-  res.locals.currentTeam = req.team;
-  res.locals.currentUser = req.user;
-  res.locals.error = req.flash("error");
-  res.locals.success = req.flash("success");
-  next();
+  try {
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    // res.locals.currentTeam = Team.findOne({"teammember.id": req.user._id});
+    next();
+  } catch(err) {
+    next(err);
+  }
 });
 
 app.use("/", authRoutes);

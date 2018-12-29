@@ -17,7 +17,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
-  <a class="navbar-brand" href="#">Home</a>
+  <a class="navbar-brand" href="/">Home</a>
   <% if(!currentUser){ %>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -33,11 +33,16 @@
         <a class="nav-item nav-link" href="#">Signed In As <%= currentUser.username %></a>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link" href="#">Current Team Name: <%= currentUser.teamname %></a>
+          <a class="nav-item nav-link" href="/<%=currentTeam._id%>">Current Team: <%= currentTeam.teamname %></a>
+      </li>
+
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-item nav-link" href="/logout">Logout</a>
+        <a class="nav-item nav-link" href="/leaveteam/<%=currentTeam._id%>"><span class="glyphicon glyphicon-log-in"></span>Leave Team</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link" href="/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a>
       </li>
     </ul>
   <% } else { %>
@@ -45,13 +50,13 @@
       <li class="nav-item active">
         <a class="nav-item nav-link" href="#">Signed In As <%= currentUser.username %></a>
       </li>
-      <!-- <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-item nav-link" href="/jointeam">Join a Team</a>
-      </li> -->
+      </li>
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-item nav-link" href="/logout">Logout</a>
+        <a class="nav-item nav-link" href="/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a>
       </li>
     </ul>
   <% } %>

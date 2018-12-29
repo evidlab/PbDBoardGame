@@ -498,7 +498,7 @@ div.arrow-left2-div:hover {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
+    width: 60%;
     height: 55%;
 }
 
@@ -515,6 +515,50 @@ div.arrow-left2-div:hover {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+/**********************Loading Modal CSS   ***********************************/
+
+#loadingContent {
+  background-color: yellow;
+  color: black;
+
+}
+
+.loader {
+  position: relative;
+  text-align: center;
+  margin: 15px auto 35px auto;
+  z-index: 9999;
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 10px solid rgba(0, 0, 0, .3);
+  border-radius: 50%;
+  border-top-color: #000;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+.loader-txt {
+  p {
+    font-size: 13px;
+    color: #666;
+    small {
+      font-size: 11.5px;
+      color: #999;
+    }
+  }
 }
 
 /**********************Playing Cards   ***********************************/
@@ -713,6 +757,11 @@ div.arrow-left2-div:hover {
   display: none;
 }
 
+.topnav-right {
+  float: right;
+}
+
+
 .sticky {
   position: fixed;
   top: 0;
@@ -856,6 +905,7 @@ div.arrow-left2-div:hover {
 }
 
 .pycard {
+  float: left;
 
   /* display: none; */
 }

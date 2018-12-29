@@ -1,0 +1,21 @@
+<% include ./partials/header %>
+<div class="jumbotron">
+  <center><h1 style="color:black;"><strong>Team <%= currentTeam.teamname %></strong></h1></center>
+</div>
+<div  class="container">
+  <% currentTeam.teammember.forEach(function(team){ %>
+      <div class="card" style="width:300px; display: inline-block;">
+        <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%"> -->
+        <div class="card-body">
+          <h4 class="card-title"><%= team.username %></h4>
+          <p class="card-text"><%= team.role %></p>
+          <!-- <a href="#" class="btn btn-primary">See Profile</a> -->
+        </div>
+      </div>
+    <% }); %>
+</div>
+
+
+
+
+<% include ./partials/footer %>
