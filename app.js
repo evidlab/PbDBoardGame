@@ -11,6 +11,8 @@ var express = require("express"),
     expressSession = require('express-session'),
     MongoStore = require('connect-mongo')(expressSession);
     mongoose = require("mongoose");
+    port = process.env.PORT || 8000;
+let server = require('http').Server(app);
 
 var authRoutes = require("./routes/index");
 
@@ -61,13 +63,11 @@ app.use(function(req, res, next){
 
 app.use("/", authRoutes);
 
-
+//
 // var server = app.listen(3000, () => {           //This will log where ther port is listening
 // 	console.log('server is listening on port', server.address().port)
 // });
 
-var server_port = process.env.YOUR_PORT || process.env.PORT || 80;
-var server_host = process.env.YOUR_HOST || '0.0.0.0';
-server.listen(server_port, server_host, function() {
-    console.log('Listening on port %d', server_port);
+server.listen(port, function() {
+    console.log("App is running on port " + port);
 });
