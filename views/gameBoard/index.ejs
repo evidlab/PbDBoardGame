@@ -43,6 +43,7 @@
       <div class="score-grid-tabs container">
         <div id = "dev-score" class="score-grid-item">Developer Time</div>
         <div id = "dev-points" class="score-grid-item"><%= currentTeam.developertime %></div>
+        <div id = "dev-points" class="score-grid-item">devTypePoints</div>
         <div id = "user-score" class="score-grid-item">User Trust</div>
         <div id = "user-points" class="score-grid-item"><%= currentTeam.usertrust %></div>
       </div>
@@ -74,7 +75,7 @@
 <!--  Modal   -->
 <div id="myModal"  class="modal">
   <!-- Modal content -->
-  <div class="modal-content">
+  <div id="card-content">
     <span class="close">&times;</span>
       <div id = "deck_content"></div>
   </div>

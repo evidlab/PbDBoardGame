@@ -4,8 +4,12 @@ let gameTabs = [];
 let chosenTabs = [];
 let decisionsMade = [];
 
+//Local Point Variables
+var userTrustPoints = 25;
+var devTypePoints = 25;
+
 function saveGame(){
-  
+
 }
 
 function resetGame(){
@@ -45,21 +49,22 @@ function drawCard(obj) {
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
     // When the user clicks the button, open the modal
-    modal.style.display = "block";
+
+
     // var chosen = shuffle();
     var modal_div = document.getElementById('deck_content');
-    for (var i = 0; i < arrow_number; i++){
-      var elem_copy = deckArray[i].cloneNode(true);
-      if(!elem_copy || typeof(elem_copy =="undefined")){
-        collected_cards.appendChild(elem_copy);
-        modal_div.appendChild(deckArray[i]);
-        chosenCardsArray.push(elem_copy);
-        activeCardsArray.push(elem_copy);
-      }else{
-        console.log("no");
-      }
+    var elem_copy = deckArray[0].cloneNode(true);
+    if(!elem_copy || typeof(elem_copy =="undefined")){
+      collected_cards.appendChild(elem_copy);
+      modal_div.appendChild(deckArray[0]);
+      chosenCardsArray.push(elem_copy);
+      activeCardsArray.push(elem_copy);
+    }else{
+      console.log("no");
     }
+
     cardEvent(activeCardsArray);
+    modal.style.display = "block";
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
@@ -85,7 +90,8 @@ function drawCard(obj) {
   }
 }
 
-function cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg){
+function cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value){
+  console.log("this");
   for (var i = 0; i < chosenTabs.length; i++){
     console.log("where");
     var pointer_elem_att = chosenTabs[i].getAttribute("collected");
@@ -96,15 +102,41 @@ function cardDecisionModal(collection, points, extraPoints, type, otherType, msg
       console.log("add point");
       break;
     }else {
-      var consequence =  document.getElementsByClassName(collection);
-      var modal = document.getElementById('modal-content');
-      var choice = document.createElement("div");
-      choice.style.cssFloat = "right";
-      choice.classList.add("well");
-      choice.innerHTML = "<h4>"+anti_msg+"</h4>"
-                      +"</br><button data-collection = '"+collection+"' id = 'decision_yes' onclick='cardDecisionEvent(this)'>Yes</button></br>"+
-                      "<button data-collection = '"+collection+"' id = 'decision_no' onclick='cardDecisionEvent(this)'>No</button>";
-      modal.appendChild(choice);
+      let consequence =  document.getElementsByClassName(collection);
+      let modal = document.getElementById('myModal');
+      let parentDiv = document.getElementById('card-content');
+      let choiceDiv = document.createElement('div');
+      choiceDiv.style.cssFloat = "right";
+      choiceDiv.setAttribute('class', 'choices');
+      // choice.classList.add("well");
+      //Modal Elements
+      let br = document.createElement('br');
+      let h3 = document.createElement('h3');
+      let mesg_text = document.createTextNode(anti_msg);
+      h3.appendChild(mesg_text);
+      choiceDiv.appendChild(h3);
+      choiceDiv.appendChild(br);
+
+      let yes_bttn = document.createElement('button');
+      yes_bttn.setAttribute('data-collection', collection);
+      yes_bttn.setAttribute('id', 'decision_yes');
+      yes_bttn.setAttribute('class', 'button yes-button');
+      yes_bttn.setAttribute('onclick', 'cardDecisionEvent(this)');
+      let yes = document.createTextNode("Yes");
+      yes_bttn.appendChild(yes);
+      choiceDiv.appendChild(yes_bttn);
+      choiceDiv.appendChild(br);
+
+      let no_bttn = document.createElement('button');
+      no_bttn.setAttribute('data-collection', collection);
+      no_bttn.setAttribute('id', 'decision_no');
+      no_bttn.setAttribute('class', 'button no-button');
+      no_bttn.setAttribute('onclick', 'cardDecisionEvent(this)');
+      let no = document.createTextNode("No");
+      no_bttn.appendChild(no);
+      choiceDiv.appendChild(no_bttn);
+
+      parentDiv.appendChild(choiceDiv);
       if (extraPoints != 0){
         addPoints(extraPoints, otherType);
       }
@@ -149,6 +181,7 @@ function cardEvent(elem){
           if(pointer_elem_class == "container-two-a" && pointer_elem_att == 1 || pointer_elem_class == "container-four-a" && pointer_elem_att == 1){
             points = -3;
             addPoints(points, devType);
+            break;
           }
         }
         break;
@@ -170,7 +203,7 @@ function cardEvent(elem){
         //Conditinal params
         extraPoints = 0;
         var otherType = devType;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_4":
         console.log(selected_card);
@@ -205,7 +238,7 @@ function cardEvent(elem){
         //Conditinal params
         var otherType = devType;
         extraPoints = 5;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_8":
         console.log(selected_card);
@@ -224,7 +257,7 @@ function cardEvent(elem){
         //Extra points added because of condition if applicable
         var otherType = devType;
         extraPoints = 7;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_9":
         console.log(selected_card);
@@ -243,7 +276,7 @@ function cardEvent(elem){
         //Extra points added because of condition if applicable
         var otherType = devType;
         extraPoints = 5;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_10":
         //Card 10 has no functionality
@@ -265,7 +298,7 @@ function cardEvent(elem){
         //Extra points added because of condition if applicable
         var otherType = devType;
         extraPoints = 3;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_13":
         console.log(selected_card);
@@ -284,7 +317,7 @@ function cardEvent(elem){
         //Extra points added because of condition if applicable
         var otherType = devType;
         extraPoints = 3;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_14":
         console.log(selected_card);
@@ -303,7 +336,7 @@ function cardEvent(elem){
         //Extra points added because of condition if applicable
         var otherType = devType;
         extraPoints = 2;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_15":
         console.log(selected_card);
@@ -334,7 +367,7 @@ function cardEvent(elem){
         //Extra points added because of condition if applicable
         var other_type = devType;
         extraPoints = 3;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_18":
         console.log(selected_card);
@@ -354,7 +387,7 @@ function cardEvent(elem){
         //Extra points added because of condition if applicable
         var other_type = userType;
         extraPoints = 3;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_19":
         console.log(selected_card);
@@ -422,7 +455,7 @@ function cardEvent(elem){
         //Extra points added because of condition if applicable
         var other_type =  devType;
         extraPoints = 3;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_25":
         console.log(selected_card);
@@ -442,7 +475,7 @@ function cardEvent(elem){
         //Extra points added because of condition if applicable
         var other_type =  devType;
         extraPoints = 1;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_26":
         if(checkScore(userType) > 15){
@@ -468,7 +501,7 @@ function cardEvent(elem){
         //Extra points added because of condition if applicable
         var other_type =  userType;
         extraPoints = -6;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_29":
         console.log(selected_card);
@@ -488,7 +521,7 @@ function cardEvent(elem){
         //Extra points added because of condition if applicable
         var other_type =  userType;
         extraPoints = -7;
-        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg);
+        cardDecisionModal(collection, points, extraPoints, type, otherType, msg, anti_msg, value);
         break;
       case "card_30":
         console.log(selected_card);
