@@ -16,7 +16,7 @@ var authRoutes = require("./routes/index");
 
 // mongoose.connect("mongodb://localhost:27017/pbdboardgame", {useNewUrlParser: true});
 
-mongoose.connect("mongodb:rj:infosci35@ds137263.mlab.com:37263/pbdboardgame", {useNewUrlParser: true});
+mongoose.connect("mongodb://rj:infosci35@ds137263.mlab.com:37263/pbdboardgame", {useNewUrlParser: true});
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -60,16 +60,6 @@ app.use(function(req, res, next){
 });
 
 app.use("/", authRoutes);
-
-
-
-// app.listen(process.env.PORT, process.env.IP, function(){
-//    console.log("The YelpCamp Server Has Started!");
-// });
-
-// app.listen(process.env.PORT, process.env.IP, function(){
-//   console.log('server is listening on port');
-// });
 
 
 // var server = app.listen(3000, () => {           //This will log where ther port is listening
