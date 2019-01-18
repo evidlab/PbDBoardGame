@@ -67,11 +67,17 @@ app.use("/", authRoutes);
 //    console.log("The YelpCamp Server Has Started!");
 // });
 
-app.listen(process.env.PORT, process.env.IP, function(){
-  console.log('server is listening on port');
-});
+// app.listen(process.env.PORT, process.env.IP, function(){
+//   console.log('server is listening on port');
+// });
 
 
 // var server = app.listen(3000, () => {           //This will log where ther port is listening
 // 	console.log('server is listening on port', server.address().port)
 // });
+
+var server_port = process.env.YOUR_PORT || process.env.PORT || 80;
+var server_host = process.env.YOUR_HOST || '0.0.0.0';
+server.listen(server_port, server_host, function() {
+    console.log('Listening on port %d', server_port);
+});
