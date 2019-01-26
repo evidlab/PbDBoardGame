@@ -83,6 +83,7 @@ router.post("/register", function(req, res){
         });
   });
 });
+
 //Handling Login logic
 router.post("/login", passport.authenticate("local",
   {
@@ -101,7 +102,7 @@ router.get("/logout", function(req, res){
 
 //Handle New Team Logic
 router.post("/jointeam",  function(req, res){
-  if(req.existing_team == "none"){
+  if(req.body.existing_team == "none"){
     var teamname = req.body.teamname;
     var developertime = 25;
     var usertrust = 25;
@@ -121,7 +122,6 @@ router.post("/jointeam",  function(req, res){
         req.flash("success", "Successfully Created a Team! ");
         res.redirect("/");
         // res.send({currentTeam: teamname});
-
       }
     });
   }else {
