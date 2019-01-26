@@ -1,4 +1,4 @@
-[PbDBoardGame website link](https://rawgit.com/rjpadgett2/PbDBoardGame/master/index.html)
+[PbDBoardGame website link](https://pbdboardgame.appspot.com/)
 
 The Rules: Privacy by Design (PbD) Card Game
 
