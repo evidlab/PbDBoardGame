@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" type="text/css" href="/stylesheets/landing.css">
+  <title>PbDBoardGame</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
+  <a class="navbar-brand" href="/">Home</a>
+  <% if(!currentUser){ %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-item nav-link active <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>" href="/login">Login</a></li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-item nav-link <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>" href="/register">Sign Up</a></li>
+        </li>
+      </ul>
+  <% } else if (currentUser && currentTeam){ %>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-item nav-link" href="#">Signed In As <%= currentUser.username %></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-item nav-link" href="/<%=currentTeam._id%>">Current Team: <%= currentTeam.teamname %></a>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-item nav-link" href="/leaveteam/<%=currentTeam._id%>"><span class="glyphicon glyphicon-log-in"></span>Leave Team</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link" href="/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a>
+      </li>
+    </ul>
+  <% } else { %>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-item nav-link" href="#">Signed In As <%= currentUser.username %></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link" href="/jointeam">Join a Team</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-item nav-link" href="/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a>
+      </li>
+    </ul>
+  <% } %>
+</nav>

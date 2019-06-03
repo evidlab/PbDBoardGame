@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/stylesheets/register.css">
+  <title>PbDBoardGame</title>
+</head>
+<body>
+<div class="row">
+       <h1 style="text-align: center">Create New Team</h1>
+       <div style="width: 30%; margin: 25px auto;">
+           <form action="/jointeam" method="post">
+               <div class="form-group">
+                    <label for="username">Create New Team</label>
+                   <input class="form-control" type="text" name="teamname" placeholder="teamname">
+               </div>
+               <h1>OR...</h1>
+               <div class="form-group">
+                 <label for="existing_team">Join Existing Team</label>
+                 <select class="form-control" name="existing_team">
+                   <option>none</option>
+                     <% teams.forEach(function(team){ %>
+                        <option><%= team.teamname %></option>
+                      <% }); %>
+                  </select>
+               </div>
+               <h1>Chose your Role</h1>
+               <div class="form-group">
+                   <label for="role">Role</label>
+                   <select class="form-control" name="role">
+                      <option>Developer</option>
+                      <option>User Experience (UX) Designer</option>
+                      <option>Manager</option>
+                    </select>
+               </div>
+               <div class="form-group">
+                   <button class="btn btn-lg btn-primary btn-block">Submit</button>
+               </div>
+           </form>
+           <a href="/">Go Back</a>
+       </div>
+   </div>
+ </body>
+ </html>

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/gameBoard.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>PbDBoardGame</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+  var team_id = "<%= currentTeam._id %>";
+  </script>
+
+  <script src="../controller/index.js"> </script>
+</head>
+<body>
+<div class="topnav" id="myTopnav">
+  <a href="/" class="active">Home</a>
+  <a onclick="openNav()" href="#">Check Score</a>
+  <a onclick="resetGame()" href="#">Reset Game</a>
+  <div class="topnav-right">
+    <a onclick="saveGame()" href="#">Save Game</a>
+  </div>
+</div>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div id = "scoreBoard">
+    <div class = "team">
+      <center><h2> Team <%= currentTeam.teamname %></h2></center>
+      <div class="score-grid-tabs container">
+        <div id = "dev-score" class="score-grid-item">Developer Time</div>
+        <div id = "dev-points" class="score-grid-item"><%= currentTeam.developertime %></div>
+        <div id = "dev-points" class="score-grid-item">devTypePoints</div>
+        <div id = "user-score" class="score-grid-item">User Trust</div>
+        <div id = "user-points" class="score-grid-item"><%= currentTeam.usertrust %></div>
+      </div>
+    </div>
+    <div>
+      <center><h2>Cards Drawn</h2></center>
+      <div id = "collected-cards">
+
+      </div>
+    </div>
+  </div>
+</div>
+<% include cards.ejs %>
+
+<!--  Modal   -->
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div id="modal-content">
+      <div class="modal-body text-center">
+        <div class="loader"></div>
+        <div class="loader-txt">
+          <p>Adding Points...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  Modal   -->
+<div id="myModal"  class="modal">
+  <!-- Modal content -->
+  <div id="card-content">
+    <span class="close">&times;</span>
+      <div id = "deck_content"></div>
+  </div>
+</div>
+
+
+
+<!--************************Row One *****************************************-->
+
+  <div class="holder">
+      <div class = "titles">
+        <div class = "title-left">
+          <span><h1>Collectiong Demographic Information</h1></span>
+        </div>
+        <div class = "title-right">
+          <span><h1>Sharing Demographic Information</h1></span>
+        </div>
+      </div>
+      <div class="wrapper">
+        <center>
+          <div id = "1" class="tabs container-one container-one-a">
+            <h4>Provide Service, Maintain Site</h4>
+            <span class = "cost">-2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit" >0</span>
+            <br>
+            <span class = "cost">0</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper">
+          <center>
+          <div id = "2" class="tabs container-one container-one-a">
+            <h4>Marketing</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost" data-value = "0">0</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit" data-value = "1">+1</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper">
+          <center>
+          <div id = "3" class="tabs container-one container-one-a">
+            <h4>Profiling</h4>
+            <span class = "cost" >+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit" >-2</span>
+            <br>
+            <span class = "cost">-1</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit" >+1</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </cetner>
+      </div>
+      <div class="wrapper">
+          <div data-arrow-value = "1" id = "arrow_one" onclick="drawCard(this)" class="arrow-right-div"><span class="arrow-right"></span>Draw One Card</div>
+      </div>
+      <div class="wrapper">
+          <center>
+          <div id = "4" class="tabs container-one container-one-b">
+            <h4>Other Corps</h4>
+            <span class = "cost">+4</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-3</span>
+            <br>
+            <span class = "cost">-3</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+3</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper">
+          <center>
+          <div id = "5" class="tabs container-one container-one-b">
+            <h4>Academic Researchers</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">0</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+1</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper">
+          <center>
+          <div id = "6" class="tabs container-one container-one-b">
+            <h4>Government on Request</h4>
+            <span class = "cost">-3</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-3</span>
+            <br>
+            <span class = "cost">0</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+  </div>
+  <div class="wrapper">
+      <div data-arrow-value = "1" id = "arrow_two" onclick="drawCard(this)" class="arrow-down-div"><span class="arrow-down"></span>Draw One Card</div>
+  </div>
+  <!--************************Row Two ****************************************-->
+  <div class="holder-two">
+    <div class = "titles">
+      <div class = "title-left">
+        <span><h1>Sharing Health Information</h1></span>
+      </div>
+      <div class = "title-right">
+        <span><h1>Collecting Health Information</h1></span>
+      </div>
+    </div>
+      <div class="wrapper-two">
+        <center>
+          <div id = "7" class="tabs container-two container-two-a">
+            <h4>Government On Request</h4>
+            <span class = "cost">-3</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-3</span>
+            <br>
+            <span class = "cost">-5</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-two">
+          <center>
+          <div id = "8" class="tabs container-two container-two-a">
+            <h4>Academic Research</h4>
+            <span class = "cost">+3</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-3</span>
+            <br>
+            <span class = "cost">-3</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+3</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-two">
+          <center>
+          <div id = "9" class="tabs container-two container-two-a">
+            <h4>Other Corps</h4>
+            <span class = "cost">+3</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-5</span>
+            <br>
+            <span class = "cost">-4</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+3</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </cetner>
+      </div>
+      <div class="wrapper-two">
+          <div data-arrow-value = "2" id = "arrow_three" onclick="drawCard(this)" class="arrow-left-div"><span class="arrow-left"></span>Draw Two Cards</div>
+      </div>
+      <div class="wrapper-two">
+          <center>
+          <div id = "10" class="tabs container-two container-two-b">
+            <h4>Profiling</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">-1</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+1</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-two">
+          <center>
+          <div id = "11" class="tabs container-two container-two-b">
+            <h4>Marketing</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">-4</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-two">
+          <center>
+          <div id = "12" class="tabs container-two container-two-b">
+            <h4>Provide Service, maintain site</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">0</span>
+            <br>
+            <span class = "cost">0</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+  </div>
+  <div class="wrapper-two">
+      <div data-arrow-value = "2" id = "arrow_four" onclick="drawCard(this)" class="arrow-down2-div"><span class="arrow-down2"></span>Draw Two Cards</div>
+  </div>
+
+  <!--************************Row Three *****************************************-->
+  <div class="holder-three">
+    <div class = "titles">
+      <div class = "title-left">
+        <span><h1>Collecting Purchasing Information</h1></span>
+      </div>
+      <div class = "title-right">
+        <span><h1>Sharing Purchasing Information</h1></span>
+      </div>
+    </div>
+      <div class="wrapper-three">
+        <center>
+          <div id = "13" class="tabs container-three container-three-a">
+            <h4>Provide Service, Maintain Site</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-1</span>
+            <br>
+            <span class = "cost">+1</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">-1</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-three">
+          <center>
+          <div id = "14" class="tabs container-three container-three-a">
+            <h4>Marketing</h4>
+            <span class = "cost">+4</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-3</span>
+            <br>
+            <span class = "cost">-3</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-three">
+          <center>
+          <div id = "15" class="tabs container-three container-three-a">
+            <h4>Profiling</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">-2</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+1</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </cetner>
+      </div>
+      <div class="wrapper-three">
+          <div data-arrow-value = "2" id = "arrow_five" onclick="drawCard(this)" class="arrow-right-div"><span class="arrow-right"></span>Draw Two Cards</div>
+      </div>
+      <div class="wrapper-three">
+          <center>
+          <div id = "16" class="tabs container-three container-three-b">
+            <h4>Other Corps</h4>
+            <span class = "cost">+5</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-4</span>
+            <br>
+            <span class = "cost">-6</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+4</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-three">
+          <center>
+          <div id = "17" class="tabs container-three container-three-b">
+            <h4>Academic Researchers</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">-3</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-three">
+          <center>
+          <div id = "18" class="tabs container-three container-three-b">
+            <h4>Government on request</h4>
+            <span class = "cost">-3</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-4</span>
+            <br>
+            <span class = "cost">-3</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+  </div>
+  <div class="wrapper-three">
+      <div data-arrow-value = "3" id = "arrow_six" onclick="drawCard(this)" class="arrow-down3-div"><span class="arrow-down3"></span>Draw Three Cards</div>
+  </div>
+
+  <!--************************Row Four ****************************************-->
+  <div class="holder-four">
+    <div class = "titles">
+      <div class = "title-left">
+        <span><h1>Sharing Contact Lists</h1></span>
+      </div>
+      <div class = "title-right">
+        <span><h1>Collecting Contact Lists</h1></span>
+      </div>
+    </div>
+      <div class="wrapper-four">
+        <center>
+          <div id = "19" class="tabs container-four container-four-a">
+            <h4>Government on request</h4>
+            <span class = "cost">-3</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-4</span>
+            <br>
+            <span class = "cost">-3</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-four">
+          <center>
+          <div id = "20" class="tabs container-four container-four-a">
+            <h4>cademic Researchers</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">-3</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-four">
+          <center>
+          <div id = "21" class="tabs container-four container-four-a">
+            <h4>Other Corps</h4>
+            <span class = "cost">+3</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-3</span>
+            <br>
+            <span class = "cost">-4</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+3</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </cetner>
+      </div>
+      <div class="wrapper-four">
+          <div data-arrow-value = "3" id = "arrow_seven" onclick="drawCard(this)" class="arrow-left-div"><span class="arrow-left"></span>Draw Three Cards</div>
+      </div>
+      <div class="wrapper-four">
+          <center>
+          <div id = "22" class="tabs container-four container-four-b">
+            <h4>Profiling</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">-2</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+1</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-four">
+          <center>
+          <div id = "23" class="tabs container-four container-four-b">
+            <h4>Marketing</h4>
+            <span class = "cost">+4</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-3</span>
+            <br>
+            <span class = "cost">-3</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-four">
+          <center>
+          <div id = "24" class="tabs container-four container-four-b">
+            <h4>Provide Service, maintain site</h4>
+            <span class = "cost">+1</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">0</span>
+            <br>
+            <span class = "cost">-2</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+  </div>
+  <div class="wrapper-four">
+      <div data-arrow-value = "3" id = "arrow_eight" onclick="drawCard(this)" class="arrow-down4-div"><span class="arrow-down4"></span>Draw Three Cards</div>
+  </div>
+
+
+  <!--************************Row Five*****************************************-->
+  <div class="holder-five">
+    <div class = "titles">
+      <div class = "title-left">
+        <span><h1>Collecting Site Activity</h1></span>
+      </div>
+      <div class = "title-right">
+        <span><h1>Sharing Site Activity</h1></span>
+      </div>
+    </div>
+      <div class="wrapper-five">
+        <center>
+          <div id = "25" class="tabs container-five container-five-a">
+            <h4>Provide Service, Maintain Site</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">+2</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-five">
+          <center>
+          <div id = "26" class="tabs container-five container-five-a">
+            <h4>Marketing</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">-2</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-five">
+          <center>
+          <div id = "27" class="tabs container-five container-five-a">
+            <h4>Profiling</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">-1</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+1</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </cetner>
+      </div>
+      <div class="wrapper-five">
+          <div data-arrow-value = "4" id = "arrow_nine" onclick="drawCard(this)" class="arrow-right2-div"><span class="arrow-right2"></span>Draw Four Cards</div>
+      </div>
+      <div class="wrapper-five">
+          <center>
+          <div id = "28" class="tabs container-five container-five-b">
+            <h4>Other Corps</h4>
+            <span class = "cost">+5</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-4</span>
+            <br>
+            <span class = "cost">-5</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+3</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-five">
+          <center>
+          <div id = "29" class="tabs container-five container-five-b">
+            <h4>Academic Researchers</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">-2</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+2</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-five">
+          <center>
+          <div id = "30" class="tabs container-five container-five-b">
+            <h4>Government on Request</h4>
+            <span class = "cost">-3</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-4</span>
+            <br>
+            <span class = "cost">-3</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+3</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+  </div>
+  <div class="wrapper-five">
+      <div data-arrow-value = "4" id = "arrow_ten" onclick="drawCard(this)" class="arrow-down5-div"><span class="arrow-down5"></span>Draw Four Cards</div>
+  </div>
+
+  <!--************************Row Six****************************************-->
+  <div class="holder-six">
+    <div class = "titles">
+      <div class = "title-left">
+        <span><h1>Sharing Location Data</h1></span>
+      </div>
+      <div class = "title-right">
+        <span><h1>Collecting Location Data</h1></span>
+      </div>
+    </div>
+      <div class="wrapper-six">
+        <center>
+          <div id = "31" class="tabs container-six container-six-a">
+            <h4>Government on request</h4>
+            <span class = "cost">-3</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-4</span>
+            <br>
+            <span class = "cost">-2</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+3</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-six">
+          <center>
+          <div id = "32" class="tabs container-six container-six-a">
+            <h4>Academic Researchers</h4>
+            <span class = "cost">+3</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">-3</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+3</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-six">
+          <center>
+          <div id = "33" class="tabs container-six container-six-a">
+            <h4>Other Corps</h4>
+            <span class = "cost">+4</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-4</span>
+            <br>
+            <span class = "cost">-4</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+4</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </cetner>
+      </div>
+      <div class="wrapper-six">
+          <div data-arrow-value = "4" id = "arrow_eleven" onclick="drawCard(this)" class="arrow-left2-div"><span class="arrow-left2"></span>Draw Four Cards</div>
+      </div>
+      <div class="wrapper-six">
+          <center>
+          <div id = "34" class="tabs container-six container-six-b">
+            <h4>Profiling</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">-1</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+1</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-six">
+          <center>
+          <div id = "35" class="tabs container-six container-six-b">
+            <h4>Marketing</h4>
+            <span class = "cost">+4</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-4</span>
+            <br>
+            <span class = "cost">-4</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">+4</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+      <div class="wrapper-six">
+          <center>
+          <div id = "36" class="tabs container-six container-six-b">
+            <h4>Provide Service, maintain site</h4>
+            <span class = "cost">+2</span>
+            <img class = "img-resource" src="/images/resources.png" alt="resources" height="60" width="60">
+            <span class = "benefit">-2</span>
+            <br>
+            <span class = "cost">+2</span>
+            <img class = "img-trust" src="images/trust.png" alt="trust" height="60" width="60">
+            <span class = "benefit">-1</span>
+            <br>
+            <button type="button" class="collect-button" onclick="collected(this)">Collect</button>
+            <button type="button" class="not-collect-button" onclick="collected(this)">Do Not Collect</button>
+          </div>
+        </center>
+      </div>
+  </div>
+
+</body>
+</html>

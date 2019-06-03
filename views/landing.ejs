@@ -1,0 +1,124 @@
+<% include ./partials/header %>
+  <div class="container">
+      <% if(error && error.length > 0){ %>
+          <div class="alert alert-danger" role="alert">
+              <%= error %>
+          </div>
+      <% } %>
+      <% if(success && success.length > 0){ %>
+          <div class="alert alert-success" role="alert">
+              <%= success %>
+          </div>
+      <% } %>
+  </div>
+
+  <div id="landing-header">
+    <center><p style = "font-size:100px; color:white;">PbDBoardGame</P></center>
+      <button type="button" id = "instructions-btn" onclick = "instructions()"class="btn btn-warning">Instructions</button>
+    <% if(currentUser &&currentTeam){ %>
+      <a href="/gameBoard" class="btn btn-lg btn-success">Start Game</a>
+    <% } %>
+      <!-- <a href="/joingteam" class="btn btn-lg btn-success">Join a team</a> -->
+	  <!-- <a href="/register" class="btn btn-lg btn-success">Create New User</a> -->
+    <!-- <a href="/login" class="btn btn-lg btn-success">Continue Game</a> -->
+    <!-- <a href="/gameBoard" class="btn btn-lg btn-success">Game Board</a> -->
+ </div>
+
+ <!-- Instructions Modal -->
+ <!-- The Modal -->
+<div id="instructionsModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <center><h2>Instructions</h2></center>
+      <span class="close">&times;</span>
+    </div>
+    <div class="modal-body">
+      <p><strong>Context:</strong> You are an employee of the Healthably Software Company. You are working with a team on a new mobile phone app called <strong>GlucoMon</strong>. This app enables daily glucose monitoring  as well as fitness monitoring for people with diabetes. </p>
+      <p><strong>About Glucomon:</strong></p>
+      <p>Glucomon’s goal is to help people with diabetes record and monitor their daily blood sugar levels. It provides a place for users to enter this health data as well as ways to track it over time. It also encourages users to record data about their symptoms and moods, and users phone sensors to track things like number of times a person left their home or office and daily physical activity. Developers hope that correlating and finding patterns in this data will encourage users to take good care of their health.</p>
+      <p>Right now, Glucomon is supported by subscriptions, rather than advertising: users pay a small monthly fee to use the app. Glucomon is in a crowded market - there are many health apps for diabetics competing for users. Finally, the parent company, Healthably, is a small company without external investors or a lot of extra resources. Employees must watch the bottom line carefully.</p>
+      <p><strong>Object of the Game:</strong> to decide on a privacy policy for your app company. What data will you collect, and who will you share it with? Your decisions will cost you or gain you resources, resulting in a winning or losing app development strategy. </p>
+      <p>
+        <strong>Materials: </strong>
+        <ul>
+          <li>Game board - a winding path of policy decisions</li>
+          <li>Event cards - events that might change your policy decisions</li>
+          <li>Resource tokens - chips to keep track of how your team is doing on developer time and user trust</li>
+          <li>Policy decision chips - mark your policy decisions on the gameboard</li>
+        </ul>
+      </p>
+      <p>
+        <strong>Set-up:  </strong>
+        <ol>
+          <li><strong>Resource tokens:</strong> Some games have you collect cards or tokens or money. In this game, you collect two types of resources: "developer time" and "user trust.” Your team begins with <strong>25 developer time </strong>and <strong>25 user trust</strong>. Developer time is like money. Developer time is precious because it helps you build more, bigger, and better products. User trust represents your customer base. User trust is precious because it helps ensure customers want to use your application. You will spend these resources, or earn more of them, depending on the choices you make in your policy. Your team must cooperate to make decisions about each element of your policy.  Take 25 chips of each color from the bank to begin. </li>
+          <li><strong>Roles:</strong> Before you begin, pick roles for each member of your team. Your role is your position on the mobile app development team. Decide who will be a:
+          <ul>
+            <li><strong>Developer. </strong>The developer cares about the product working well. The developer prioritizes the resource of “developer time,” because their time is a precious resource for making the product work well. Try not to let developer time fall below 15.</li>
+            <li><strong>User Experience (UX) Designer. </strong>The UX designer cares about the user experience using the app. The UX designer prioritizes the game resource of “user trust”, because this is how user satisfaction is measured. Try not to let user trust fall below 15.</li>
+            <li><strong>Manager. </strong>The manager strives for a balanced product. They must monitor both  the resource of “developer time,” because this is how they will build a bigger team, and also the resource of “user trust,” because this is how they will ensure that their product has a customer base. Try not to let either developer time or user trust fall below 15.</li>
+          </ul>
+          If you have only two players, choose a Developer and a UX Designer. If you have four players, there should be two Developers.</li>
+          <li><strong>Game play: </strong> Your team will proceed along the game board path. Each square on the path will ask you to make a decision about a particular type of data, and a particular use for that data. Your team must cooperate to decide whether you will collect or share each type of data for that use. For example:  </li>
+          <li>If the board prompts you to spend developer time or user trust to make your decision, put the required number of resources in the bank. If the board prompts you to earn developer time or user trust, take the number of resources from the bank.</li>
+          <li>If the board prompts you to draw one or more event cards, draw each card one at a time and follow the directions on the card, making decisions or applying event stickers as necessary.</li>
+        </ol>
+      </p>
+      <p>
+        <strong>Losing:</strong>
+        <ol>
+          <li>If you run out of developer resources or user trust at any point in the game, the game is over. Your team does not have a winning development strategy. </li>
+        </ol>
+      </p>
+      <p>
+        <strong>Winning:</strong>
+        <ol>
+          <li><strong>Beloved but outdated:</strong> 1-10 dev resources, 25+ user trust: You have a product users really trust, but it was expensive to develop. You win, but product updates for this product, or your next product, may be delayed or postponed indefinitely.</li>
+          <li><strong>Bleeding edge, bleeding users:</strong>25+ dev resources, 1-10 user trust: You have a top of the line product that you developed efficiently, but users are never sure whether they can trust you. You win, but your brand is troubled, and you may have trouble attracting users to your next product.</li>
+          <li><strong>Middle of the road:</strong>0-25 dev resources, 10-25 user trust: Your balanced strategy played it safe. You’re neither an industry superstar nor a fan favorite, but you have a solid development and user retention strategy. </li>
+        </ol>
+      </p>
+      <p>
+        <strong>Game Play:</strong>
+        <ol>
+          <li>On your first turn, make decisions about the <strong>Collecting demographic data.</strong>
+            <ul>
+              <li>Decide whether you will collect demographic data to provide service & maintain the site (yes/no); for marketing (yes/no); and for profiling (yes/no). Your team can make these decisions one-by-one, or you can make them all at the same time. </li>
+              <li>Each decision will have a cost or benefit in <strong>developer time</strong> and <strong>user trust.</strong></li>
+              <li>The costs and benefits of deciding to collect are represented in blue; the costs and benefits of deciding not to collect are represented in red. In the image above, choosing to collect demographic data to provide service and maintain the site costs two developer time (because developers must put time and effort into building a database and analyzing the data). On the other hand, choosing not to collect demographic data to provide service and plan future service gains your team two user trust, because users appreciate that you’re not asking probing questions about their social categories or status. </li>
+              <li>As you make a decision for each cell, place a decision token over the cell. Pay the bank if you owe resources, or take resources from the bank if you gain resources. (Online: click collect or do not collect on the cell to decide. Your resources will be automatically calculated and added/subtracted from your total score.) </li>
+            </ul>
+          </li>
+          <li>When you’ve completed your first three decisions, the board will prompt you to draw an event card.Event cards represent the many things in design you can't see coming. You'll be presented with new opportunities and challenges that you'll have to make decisions about, and you may gain or lose resources depending on the decisions you've already made.
+            <ul>
+              <li>Follow the directions on the card, and make a decision as a team.</li>
+              <li>If there is a cost or benefit, gain the benefit or pay the cost <strong>in addition</strong> to the costs or benefits on the board.</li>
+            </ul>
+          </li>
+          <li>Round 2! As a team, make decisions about the Sharing demographic data.
+            <ul>
+              <li>Your team can make these decisions one-by-one, or you can make them all at the same time. </li>
+              <li>If you did not collect any demographic information, you may not share it. Cover all three cells with a decision token and proceed to the next step (drawing an event card).</li>
+              <li>The costs and benefits of deciding to share are represented in blue; the costs and benefits of deciding not to share are represented in red. In the image above, choosing to share demographic data with other companies earns four developer time (because other companies will pay you for user data, increasing the resources you have available to hire and pay developers). However, this decision will cost you three user trust, because you’ve given away user information. On the other hand, choosing not to share demographic data with other companies loses you three developer time, because you’ve lost a business opportunity (and therefore future revenue.) But it gains your team three user trust, because users appreciate that you aren’t sharing data they’ve given you. </li>
+              <li>As you make a decision for each cell, place a decision token over the cell. Pay the bank if you owe resources, or take resources from the bank if you gain resources. (Online: click collect or do not collect on the cell to decide. Your resources will be automatically calculated and added/subtracted from your total score.) </li>
+            </ul>
+          </li>
+          <li>Proceed along the board as directed by the arrows, making policy decisions and drawing event cards when instructed.</li>
+          <li>That’s it! You’ve completed your policy. Total your developer time and user trust resources, and see how you did! Are you happy with your privacy? What about with the impacts of your decisions on developer resources and user trust? </li>
+        </ol>
+      </p>
+
+
+    </div>
+    <div class="modal-footer">
+      <!-- <h3>Modal Footer</h3> -->
+    </div>
+  </div>
+
+</div>
+
+
+<script src="/controller/landing.js"> </script>
+
+<% include ./partials/footer %>
