@@ -11,14 +11,14 @@ var express = require("express"),
     expressSession = require('express-session'),
     MongoStore = require('connect-mongo')(expressSession);
     mongoose = require("mongoose");
-    port = process.env.PORT || 8000;
+    port = 3000;
 let server = require('http').Server(app);
 
 var authRoutes = require("./routes/index");
 
-// mongoose.connect("mongodb://localhost:27017/pbdboardgame", {useNewUrlParser: true});
+mongoose.connect("mongodb://mongo:27017/pbdboardgame", {useNewUrlParser: true});
 
-mongoose.connect("mongodb://rj:infosci35@ds137263.mlab.com:37263/pbdboardgame", {useNewUrlParser: true});
+//mongoose.connect("mongodb://rj:infosci35@ds137263.mlab.com:37263/pbdboardgame", {useNewUrlParser: true});
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));

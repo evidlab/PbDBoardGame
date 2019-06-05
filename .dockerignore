@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+docker-compose.yml
+pycard
+*.sublime-*
+*.pdf
+*.ipynb
+docs
