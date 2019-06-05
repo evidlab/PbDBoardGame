@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+PbDBoardGame.sublime-project
+PbDBoardGame.sublime-workspace
+
+node_modules
+npm-debug.log
