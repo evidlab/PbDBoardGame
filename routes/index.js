@@ -1,18 +1,14 @@
 var express = require("express");
-//var router = express.Router();
+var router = express.Router();
 var passport = require("passport");
 var middleware = require("../middleware");
 var User = require("../models/users");
 var Team = require("../models/teams");
-var favicon = require("serve-favicon");
-var path = require("path");
-var app = express();
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.bmp')));
 //====================
 //Auth Routes
 //====================
 
-app.get("/", function(req, res){
+router.get("/", function(req, res){
   if(req.user){
     Team.findOne({"teammember.id": req.user._id}, function(err, foundTeam){
       if(err){
@@ -27,16 +23,16 @@ app.get("/", function(req, res){
 });
 
 // show register form
-app.get("/register", function(req, res){
+router.get("/register", function(req, res){
    res.render("register", {page: 'register'});
 });
 
 //show login form
-app.get("/login", function(req, res){
+router.get("/login", function(req, res){
    res.render("login", {page: 'login'});
 });
 
-app.get("/gameBoard", function(req, res){
+router.get("/gameBoard", function(req, res){
   if(req.user){
     Team.findOne({"teammember.id": req.user._id}, function(err, foundTeam){
       if(err){
@@ -52,7 +48,7 @@ app.get("/gameBoard", function(req, res){
   }
 });
 
-app.get("/jointeam", function(req, res){
+router.get("/jointeam", function(req, res){
   Team.find({}, function(err, allTeams){
      if(err){
          console.log(allTeams);
@@ -68,7 +64,7 @@ app.get("/jointeam", function(req, res){
 
 
 //handle sign up logic
-app.post("/register", function(req, res){
+router.post("/register", function(req, res){
   var newUser = new User({
     username: req.body.username,
     // developertime: 25,
@@ -89,7 +85,7 @@ app.post("/register", function(req, res){
 });
 
 //Handling Login logic
-app.post("/login", passport.authenticate("local",
+router.post("/login", passport.authenticate("local",
   {
     successRedirect: "/",
     failureRedirect: "/login"
@@ -98,14 +94,14 @@ app.post("/login", passport.authenticate("local",
 });
 
 //Logout logic
-app.get("/logout", function(req, res){
+router.get("/logout", function(req, res){
   req.logout();
   req.flash("success", "Logged out succesfully!");
   res.redirect("/");
 });
 
 //Handle New Team Logic
-app.post("/jointeam",  function(req, res){
+router.post("/jointeam",  function(req, res){
   if(req.body.existing_team == "none"){
     var teamname = req.body.teamname;
     var developertime = 25;
@@ -150,7 +146,7 @@ app.post("/jointeam",  function(req, res){
 
 });
 //Check score
-app.get("/checkScore/:id", function(req, res){
+router.get("/checkScore/:id", function(req, res){
   Team.findById(req.params.id, function(err, foundTeam) {
       if(err) {
         console.log(err);
@@ -165,7 +161,7 @@ app.get("/checkScore/:id", function(req, res){
 });
 
 //Update Score
-app.get("/updateScore/:id", function(req, res){
+router.get("/updateScore/:id", function(req, res){
   Team.findById(req.params.id, function(err, foundTeam) {
       if(err) {
         console.log(err);
@@ -177,7 +173,7 @@ app.get("/updateScore/:id", function(req, res){
 
 
 // Add and Subtract Points
-app.put("/addMultiplePoints/:id", function(req, res){
+router.put("/addMultiplePoints/:id", function(req, res){
   var user_points = req.body.userPoints;
   var dev_points = req.body.devPoints;
   Team.findOneAndUpdate({_id: req.params.id}, { $inc : { usertrust : user_points, developertime : dev_points }}, { new: true }, function(err, updatedUser){
@@ -190,7 +186,7 @@ app.put("/addMultiplePoints/:id", function(req, res){
   });
 });
 
-app.put("/addPoints/:id", function(req, res){
+router.put("/addPoints/:id", function(req, res){
  var points = req.body.params;
  var type = req.body.type;
  if(type == "user"){
@@ -214,7 +210,7 @@ app.put("/addPoints/:id", function(req, res){
 });
 
 //Reset Game Points
-app.post("/resetGame/:id", function(req, res){
+router.post("/resetGame/:id", function(req, res){
   points = 25;
   Team.findOneAndUpdate({_id: req.params.id}, { $set : { usertrust : points, developertime : points }}, { new: true }, function(err, updatedUser){
     if(err){
@@ -227,7 +223,7 @@ app.post("/resetGame/:id", function(req, res){
 });
 
 //SHOW Team Members - shows more info about one campground
-app.get("/:id", function(req, res){
+router.get("/:id", function(req, res){
   if(req.user){
     Team.findById(req.params.id, function(err, foundTeam){
       if(err){
@@ -243,7 +239,7 @@ app.get("/:id", function(req, res){
   }
 });
 
-app.get("/leaveteam/:id", function(req, res){
+router.get("/leaveteam/:id", function(req, res){
     Team.update({_id: req.params.id}, { $pull: {teammember: {id:req.user._id }}}, function(err, foundTeam){
       if(err){
         console.log(err);
@@ -254,4 +250,5 @@ app.get("/leaveteam/:id", function(req, res){
     })
 });
 
-module.exports = app;
+
+module.exports = router;
