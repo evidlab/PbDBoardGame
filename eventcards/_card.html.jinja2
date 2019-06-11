@@ -10,11 +10,16 @@
     <div class="flavor">{{flavor}}</div>
     {% endif %}
     <br />
-    {% if instructions %}
-    <div class="instructions">{{instructions}}
-      {% if alt_instructions %}
-      <div class="alt-sep">-- <b>Or</b> --</div>
-      <span class="alt-instruction">{{alt_instructions}}</span>
+    {% if instructions or alt_instructions %}
+    <div class="instructions">
+      {% if instructions %}
+        {{instructions}}
+        {% if alt_instructions %}
+        <div class="alt-sep">-- <b>Or</b> --</div>
+        <span class="alt-instruction">{{alt_instructions}}</span>
+        {% endif %}
+      {% else %}
+        {{alt_instructions}}
       {% endif %}
     </div>
     {% endif %}
@@ -23,7 +28,7 @@
     <div class="carac">
       {% if devshare %}
         <div class="iconcell">
-            <img class="icon" src="dev_resources.png"> {{devshare}}
+            <img class="icon" src="dev_time.png"> {{devshare}}
         </div>
       {% endif %}
       {% if usershare %}
