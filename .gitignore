@@ -107,6 +107,7 @@ PbDBoardGame.sublime-project
 PbDBoardGame.sublime-workspace
 
 node_modules
+node_modules/*
 npm-debug.log
 
 # visual studio settings
