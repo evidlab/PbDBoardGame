@@ -627,11 +627,14 @@ function addMultiplePoints(user_points, dev_points){
       modal.style.display = "block";
     },
     success: function(data){
-      var dev_box = document.getElementById('dev-points');
-      var user_box = document.getElementById('user-points');
-      modal.style.display = "none";
-      openNav()
-      setTimeout(function(){ closeNav(); }, 1000);
+        var dev_box = document.getElementById('dev-points');
+        var user_box = document.getElementById('user-points');
+        modal.style.display = "none";
+        console.log(data);
+        $('#dev-points').html(data.developertime);
+        $('#user-points').html(data.usertrust);
+        openNav()
+        setTimeout(function(){ closeNav(); }, 1000);
     }
   });
 }

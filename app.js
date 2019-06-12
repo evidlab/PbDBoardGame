@@ -1,17 +1,18 @@
-var express = require("express"),
-    bodyParser = require("body-parser"),
-    app = express(),
-    LocalStrategy = require("passport-local"),
-    methodOverride = require("method-override"),
-    User = require("./models/users"),
-    Team = require("./models/teams"),
-    LocalStrategy = require("passport-local"),
-    passport = require("passport"),
-    flash = require("connect-flash"),
-    expressSession = require('express-session'),
-    MongoStore = require('connect-mongo')(expressSession);
-    mongoose = require("mongoose");
-    port = 3000;
+var express = require("express");
+var favicon = require("serve-favicon");
+var path = require("path");
+var bodyParser = require("body-parser");
+var app = express();
+var LocalStrategy = require("passport-local");
+var methodOverride = require("method-override");
+var User = require("./models/users");
+var Team = require("./models/teams");
+var passport = require("passport");
+var expressSession = require('express-session');
+var MongoStore = require('connect-mongo')(expressSession);
+var mongoose = require("mongoose");
+var flash = require("flash");
+var port = 3000;
 let server = require('http').Server(app);
 
 var authRoutes = require("./routes/index");
@@ -19,12 +20,13 @@ var authRoutes = require("./routes/index");
 mongoose.connect("mongodb://mongo:27017/pbdboardgame", {useNewUrlParser: true});
 
 //mongoose.connect("mongodb://rj:infosci35@ds137263.mlab.com:37263/pbdboardgame", {useNewUrlParser: true});
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.bmp')));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/public")); //
+app.use(express.static(path.join(__dirname, "public"))); //
 process.on('unhandledRejection', error => {
   // Won't execute
   console.log('unhandledRejection', error.test);

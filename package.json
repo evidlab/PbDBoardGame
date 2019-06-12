@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon --inspect=0.0.0.0 app.js",
+    "start:prod": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +26,12 @@
     "mongoose": "^5.5.12",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^5.0.1"
+    "passport-local-mongoose": "^5.0.1",
+    "serve-favicon": "^2.5.0",
+    "path": "0.12.7",
+    "flash": "1.1.0"
+  },
+  "devDependencies": {
+    "nodemon" : "1.19.1"
   }
 }

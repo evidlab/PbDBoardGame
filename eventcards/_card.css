@@ -32,7 +32,8 @@
     margin-left: 1mm;
     font-family: "Arial";
     font-weight: bold;
-    font-size: 16pt;
+    font-size: 14pt;
+    text-align: center;
 }
 
 .icon {
@@ -62,7 +63,7 @@
     margin-left: 1.5mm;
     margin-right: 1.5mm;
     margin-top: 5mm;
-    padding: 2mm;
+    padding: 1mm;
     background-color: #EEEEEE;
     border-radius: 3mm;
     /*
@@ -77,7 +78,7 @@
     font-size: 10pt;
     margin-left: 1.5mm;
     margin-right: 1.5mm;
-    padding: 2mm;
+    padding: 1mm;
     background-color: #EEEEEE;
     border-radius: 3mm;
     /*
@@ -98,8 +99,4 @@
 }
 .alt-sep {
   text-align: center;
-}
-
-.pycard {
-  display: none;
 }

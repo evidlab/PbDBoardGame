@@ -174,16 +174,19 @@ router.get("/updateScore/:id", function(req, res){
 
 // Add and Subtract Points
 router.put("/addMultiplePoints/:id", function(req, res){
-  var user_points = req.body.userPoints;
-  var dev_points = req.body.devPoints;
-  Team.findOneAndUpdate({_id: req.params.id}, { $inc : { usertrust : user_points, developertime : dev_points }}, { new: true }, function(err, updatedUser){
-    if(err){
-      console.log("Something Went Wrong" + err);
-    }else{
-      res.send({userPoints: user_points, devPoints: dev_points});
-      console.log(updatedUser);
-    }
-  });
+    var user_points = req.body.userPoints;
+    var dev_points = req.body.devPoints;
+    Team.findOneAndUpdate({ _id: req.params.id },
+        { $inc: { usertrust: user_points, developertime: dev_points } },
+        { new: true },
+        function (err, updatedUser) {
+            if(err){
+              console.log("Something Went Wrong" + err);
+            }else{
+              res.send({userPoints: user_points, devPoints: dev_points});
+              console.log(updatedUser);
+            }
+        });
 });
 
 router.put("/addPoints/:id", function(req, res){
