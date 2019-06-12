@@ -19,5 +19,3 @@ Ethical Computing in Mobile & Wearable App Development.
 
 National Science Foundation SES-1449351
 Google Faculty Research Award
-
-![NSF Logo](/public/images/nsflogo.png)
