@@ -17,5 +17,5 @@ Ethical Computing in Mobile & Wearable App Development.
 
 ![EViD Logo](/public/images/evidlogo.png)
 
-National Science Foundation SES-1449351
-Google Faculty Research Award
+National Science Foundation SES-1449351  
+Google Faculty Research Award  
